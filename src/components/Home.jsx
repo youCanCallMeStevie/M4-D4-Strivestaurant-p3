@@ -3,6 +3,8 @@ import items from "../data/menu.json";
 import { Container, Row, Col, Carousel } from "react-bootstrap";
 import { DishComments } from "./DishComments";
 import ReservationForm from "./ReservationForm";
+import Reservations from "./Reservations";
+
 class Home extends Component {
   state = {
     selectedDish: null,
@@ -43,6 +45,9 @@ class Home extends Component {
         </Row>
         <Row>
           <DishComments selectedDish={this.state.selectedDish} />
+        </Row>
+        <Row>
+          <Reservations />
         </Row>
         <Row>
           <ReservationForm />
