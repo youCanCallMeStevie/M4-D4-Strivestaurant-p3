@@ -1,18 +1,28 @@
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
+import { Link, withRouter } from "react-router-dom";
 
 const NavBar = (props) => {
+  console.log(props)
   return (
     <div>
       <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
-        <Navbar.Brand href="#home">
-          {props.title} - Strive For Food
-        </Navbar.Brand>
+        <Link to="/">
+          <Navbar.Brand>{props.title} - Strive For Food</Navbar.Brand>
+        </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ml-auto">
-            <Nav.Link>Menu</Nav.Link>
-            <Nav.Link>Reservation</Nav.Link>
+          
+          <Link to="/menu">
+          <div className={props.location.pathname === "/menu" ? "nav-link active" : "nav-link"}>Menu</div>
+            </Link>
+            
+            <Link to="/reservation">
+              <div className={props.location.pathname === "/reservation" ? "nav-link active" : "nav-link"}>Reservation</div>
+            </Link>
+
+
             <Nav.Link>Our Location</Nav.Link>
           </Nav>
         </Navbar.Collapse>
@@ -21,4 +31,4 @@ const NavBar = (props) => {
   );
 };
 
-export default NavBar;
+export default withRouter(NavBar); // will give the component exported EXTRA PROPS, like history, location & required in order to apply class changes according to paths

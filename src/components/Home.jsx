@@ -1,19 +1,17 @@
 import React, { Component } from "react";
 import items from "../data/menu.json";
 import { Container, Row, Col, Carousel } from "react-bootstrap";
-import { DishComments } from "./DishComments";
-import ReservationForm from "./ReservationForm";
-import Reservations from "./Reservations";
+
 
 class Home extends Component {
   state = {
     selectedDish: null,
   };
 
-  selectNewDish = (dish) => {
-    // console.log("Dish selected", dish);
-    this.setState({ selectedDish: dish });
-  };
+  // selectNewDish = (dish) => {
+  //   // console.log("Dish selected", dish);
+  //   this.setState({ selectedDish: dish });
+  // };
 
   render() {
     return (
@@ -31,7 +29,7 @@ class Home extends Component {
                     className="d-block w-100"
                     src={item.image}
                     alt={item.name}
-                    onClick={() => this.selectNewDish(item)}
+                    onClick={() => this.props.history.push("/details/" + item.id)}
                   />
                   <Carousel.Caption>
                     <h3>{item.name}</h3>
@@ -43,15 +41,7 @@ class Home extends Component {
             </Carousel>
           </Col>
         </Row>
-        <Row>
-          <DishComments selectedDish={this.state.selectedDish} />
-        </Row>
-        <Row>
-          <Reservations />
-        </Row>
-        <Row>
-          <ReservationForm />
-        </Row>
+      
       </Container>
     );
   }

@@ -1,5 +1,6 @@
 import React from 'react'
-import { ListGroup, Spinner } from 'react-bootstrap'
+import { ListGroup, Spinner, Container} from 'react-bootstrap'
+import ReservationForm from './ReservationForm'
 
 class Reservations extends React.Component {
 
@@ -28,6 +29,7 @@ class Reservations extends React.Component {
         console.log('IN THE RENDER METHOD')
 
         return (
+            <Container>
             <div className="mb-5">
                 <h2>RESERVATIONS</h2>
                 {
@@ -47,6 +49,8 @@ class Reservations extends React.Component {
                     </ListGroup>
                 ))}
             </div>
+            <ReservationForm/>
+            </Container>
         )
     }
 }
